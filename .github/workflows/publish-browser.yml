@@ -65,6 +65,16 @@ jobs:
           printf 'Branch: %s\nCommit: %s\n' "${{ inputs.source_ref || 'main' }}" "$SOURCE_SHA" > "$GITHUB_WORKSPACE/web-export/BUILD_INFO.txt"
           echo "Export validated for aislingin@$SOURCE_SHA"
 
+      - name: Insert opt-in WebGL probe before engine startup
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s "$GITHUB_WORKSPACE/site/webgl_probe.js"
+          HTML="$GITHUB_WORKSPACE/web-export/index.html"
+          grep -Fq '<script src="index.js"></script>' "$HTML"
+          sed -i 's@<script src="index.js"></script>@<script src="webgl_probe.js"></script><script src="index.js"></script>@' "$HTML"
+          grep -Fq '<script src="webgl_probe.js"></script>' "$HTML"
+          echo "Installed optional pre-engine WebGL probe"
       - name: Replace browser files and commit to main
         shell: bash
         run: |
@@ -82,5 +92,5 @@ jobs:
           fi
           SOURCE_SHA="$(git -C "$GITHUB_WORKSPACE/source" rev-parse --short=12 HEAD)"
           git commit -m "Publish SunnySlopes browser build from aislingin/$SOURCE_SHA"
-          git push origin HEAD:main
-          echo "Updated newwebgame/main from aislingin/$SOURCE_SHA"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+          echo "Updated newwebgame/$GITHUB_REF_NAME from aislingin/$SOURCE_SHA"
