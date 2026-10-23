@@ -70,18 +70,11 @@ jobs:
         run: |
           set -euo pipefail
           test -s "$GITHUB_WORKSPACE/site/webgl_probe.js"
-          python3 - <<'PY'
-          from pathlib import Path
-          html_path = Path("web-export/index.html")
-          html = html_path.read_text(encoding="utf-8")
-          engine_tag = '<script src="index.js"></script>'
-          if html.count(engine_tag) != 1:
-              raise SystemExit("Godot HTML entrypoint changed; cannot safely install WebGL probe")
-          html = html.replace(engine_tag, '<script src="webgl_probe.js"></script>\n\t\t' + engine_tag, 1)
-          html_path.write_text(html, encoding="utf-8")
-          assert html.index('webgl_probe.js') < html.index('src="index.js"')
-          print("Installed optional pre-engine WebGL diagnostics; inactive without ?glprobe=1")
-          PY
+          HTML="$GITHUB_WORKSPACE/web-export/index.html"
+          grep -Fq '<script src="index.js"></script>' "$HTML"
+          sed -i 's@<script src="index.js"></script>@<script src="webgl_probe.js"></script><script src="index.js"></script>@' "$HTML"
+          grep -Fq '<script src="webgl_probe.js"></script>' "$HTML"
+          echo "Installed optional pre-engine WebGL probe"
       - name: Replace browser files and commit to main
         shell: bash
         run: |
