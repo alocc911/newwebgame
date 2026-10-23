@@ -92,5 +92,5 @@ jobs:
           fi
           SOURCE_SHA="$(git -C "$GITHUB_WORKSPACE/source" rev-parse --short=12 HEAD)"
           git commit -m "Publish SunnySlopes browser build from aislingin/$SOURCE_SHA"
-          git push origin HEAD:main
-          echo "Updated newwebgame/main from aislingin/$SOURCE_SHA"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+          echo "Updated newwebgame/$GITHUB_REF_NAME from aislingin/$SOURCE_SHA"
