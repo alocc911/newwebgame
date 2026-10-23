@@ -1,0 +1,46 @@
+name: Verify WebGL diagnostics
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  test-probe:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: JavaScript syntax and mocked WebGL contract
+        run: |
+          node --check webgl_probe.js
+          node --input-type=commonjs <<'JS'
+          global.location = { search: '?glprobe=1' };
+          global.window = global;
+          global.addEventListener = () => {};
+          global.requestAnimationFrame = () => 0;
+          global.setInterval = () => 0;
+          class FakeGL {
+            createBuffer() { return {}; }
+            bindBuffer() {}
+            bufferSubData() {}
+            drawElements() {}
+            getExtension() { return null; }
+          }
+          global.WebGLRenderingContext = FakeGL;
+          global.WebGL2RenderingContext = class extends FakeGL {};
+          global.HTMLCanvasElement = class { getContext() { return new WebGL2RenderingContext(); } };
+          require('./webgl_probe.js');
+          const gl = new HTMLCanvasElement().getContext('webgl2');
+          const buffer = gl.createBuffer();
+          gl.bindBuffer(34963, buffer);
+          gl.bindBuffer(34962, buffer);
+          gl.bufferSubData(34962, 0, new Uint8Array(4));
+          gl.drawElements();
+          const data = SunnyWebGLProbe.report();
+          if (!SunnyWebGLProbe.enabled || data.total_ops.illegalBindTarget !== 1 || data.total_ops.unboundBufferSubData !== 1 || data.total_ops.drawElements !== 1) {
+            console.error('Probe counters failed mock test', data);
+            process.exit(1);
+          }
+          console.log('WebGL probe smoke test passed');
+          JS
