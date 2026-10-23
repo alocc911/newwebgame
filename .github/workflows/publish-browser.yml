@@ -65,6 +65,23 @@ jobs:
           printf 'Branch: %s\nCommit: %s\n' "${{ inputs.source_ref || 'main' }}" "$SOURCE_SHA" > "$GITHUB_WORKSPACE/web-export/BUILD_INFO.txt"
           echo "Export validated for aislingin@$SOURCE_SHA"
 
+      - name: Insert opt-in WebGL probe before engine startup
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s "$GITHUB_WORKSPACE/site/webgl_probe.js"
+          python3 - <<'PY'
+          from pathlib import Path
+          html_path = Path("web-export/index.html")
+          html = html_path.read_text(encoding="utf-8")
+          engine_tag = '<script src="index.js"></script>'
+          if html.count(engine_tag) != 1:
+              raise SystemExit("Godot HTML entrypoint changed; cannot safely install WebGL probe")
+          html = html.replace(engine_tag, '<script src="webgl_probe.js"></script>\n\t\t' + engine_tag, 1)
+          html_path.write_text(html, encoding="utf-8")
+          assert html.index('webgl_probe.js') < html.index('src="index.js"')
+          print("Installed optional pre-engine WebGL diagnostics; inactive without ?glprobe=1")
+          PY
       - name: Replace browser files and commit to main
         shell: bash
         run: |
