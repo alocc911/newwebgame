@@ -1,0 +1,86 @@
+name: Publish SunnySlopes browser build
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_ref:
+        description: "Source branch, tag, or commit from alocc911/aislingin"
+        required: false
+        type: string
+        default: main
+  push:
+    paths:
+      - .github/workflows/publish-browser.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sunnyslopes-browser-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    container:
+      image: barichello/godot-ci:4.7.2
+    steps:
+      - name: Check out browser hosting repository
+        uses: actions/checkout@v4
+        with:
+          path: site
+          persist-credentials: true
+
+      - name: Check out game source
+        uses: actions/checkout@v4
+        with:
+          repository: alocc911/aislingin
+          ref: ${{ inputs.source_ref || 'main' }}
+          path: source
+          persist-credentials: false
+
+      - name: Import and export browser game
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION=4.7.2.stable
+          TARGET="$HOME/.local/share/godot/export_templates/$VERSION"
+          SOURCE="/root/.local/share/godot/export_templates/$VERSION"
+          if [ ! -d "$TARGET" ]; then
+            mkdir -p "$(dirname "$TARGET")"
+            cp -a "$SOURCE" "$TARGET"
+          fi
+          test -s "$TARGET/web_nothreads_release.zip"
+          godot --headless --path "$GITHUB_WORKSPACE/source" --editor --import
+          mkdir -p "$GITHUB_WORKSPACE/web-export"
+          godot --headless --path "$GITHUB_WORKSPACE/source" --export-release "Web" "$GITHUB_WORKSPACE/web-export/index.html" 2>&1 | tee "$GITHUB_WORKSPACE/web-export.log"
+          if grep -Eq 'SCRIPT ERROR:|Parse Error:|Compile Error:|Failed to load script' "$GITHUB_WORKSPACE/web-export.log"; then
+            echo "Refusing to publish: Godot reported script errors."
+            exit 1
+          fi
+          for required in index.html index.js index.pck index.wasm; do
+            test -s "$GITHUB_WORKSPACE/web-export/$required"
+          done
+          SOURCE_SHA="$(git -C "$GITHUB_WORKSPACE/source" rev-parse HEAD)"
+          printf 'Branch: %s\nCommit: %s\n' "${{ inputs.source_ref || 'main' }}" "$SOURCE_SHA" > "$GITHUB_WORKSPACE/web-export/BUILD_INFO.txt"
+          echo "Export validated for aislingin@$SOURCE_SHA"
+
+      - name: Replace browser files and commit to main
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE/site"
+          # Preserve workflow and other unrelated repository content.
+          find . -maxdepth 1 -type f \( -name 'index.*' -o -name 'BUILD_INFO.txt' \) -delete
+          cp -a "$GITHUB_WORKSPACE/web-export/." ./
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Published browser files are already up-to-date."
+            exit 0
+          fi
+          SOURCE_SHA="$(git -C "$GITHUB_WORKSPACE/source" rev-parse --short=12 HEAD)"
+          git commit -m "Publish SunnySlopes browser build from aislingin/$SOURCE_SHA"
+          git push origin HEAD:main
+          echo "Updated newwebgame/main from aislingin/$SOURCE_SHA"
