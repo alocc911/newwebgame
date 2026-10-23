@@ -1,2 +1,3 @@
-Branch: economy-persistent-gold-paid-buildings-2026-10-22
-Commit: 934a727c2efc286b1053f868aaf1fa40cc293ff3
+Source: alocc911/aislingin/main
+Commit: 
+Godot: 4.7.2
