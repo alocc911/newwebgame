@@ -1,3 +1,2 @@
-Source: alocc911/aislingin/main
-Commit: 
-Godot: 4.7.2
+Branch: feature/conquest-europe-strategic-maps-2026-10
+Commit: 4a772b2a53694460e8897b291a56d3d7240df4c1
