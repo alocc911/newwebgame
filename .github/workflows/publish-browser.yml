@@ -99,6 +99,8 @@ jobs:
         run: |
           set -euo pipefail
           cd "$GITHUB_WORKSPACE/site"
+          # Other completed runs may have updated main since this run was queued.
+          git pull --ff-only origin "$GITHUB_REF_NAME"
           # Preserve workflow and other unrelated repository content.
           find . -maxdepth 1 -type f \( -name 'index.*' -o -name 'BUILD_INFO.txt' \) -delete
           cp -a "$GITHUB_WORKSPACE/web-export/." ./
@@ -124,6 +126,7 @@ jobs:
             exit 0
           fi
           cd "$GITHUB_WORKSPACE/site"
+          git pull --ff-only origin "$GITHUB_REF_NAME"
           SOURCE_SHA="unavailable"
           if [ -d "$GITHUB_WORKSPACE/source/.git" ]; then
             SOURCE_SHA="$(git -C "$GITHUB_WORKSPACE/source" rev-parse HEAD)"
