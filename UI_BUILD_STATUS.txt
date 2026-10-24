@@ -1,0 +1,14 @@
+Source: 62eeeb8af07dd2443a41b8844ef7d4983c5bad7b
+Godot build and UI self-test: failure
+Browser publication: skipped
+Workflow run: 40117826272
+
+UI smoke test output:
+libfontconfig.so.1: cannot open shared object file: No such file or directory
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: DashboardUISelfTest: Province menu fonts are too small
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _fail (res://scripts/DashboardUISelfTest.gd:9)
+       [1] _check_ui (res://scripts/DashboardUISelfTest.gd:48)
