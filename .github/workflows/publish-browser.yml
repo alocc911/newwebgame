@@ -1,4 +1,5 @@
 name: Publish SunnySlopes browser build
+# Verified source typography pass: aislingin@3a1817176bd4d452215b02941d7a7ab778e631e4
 # Record CI results for the 2026-10-24 dashboard UI fix
 # UI layout fix: aislingin@62eeeb8af07dd2443a41b8844ef7d4983c5bad7b
 # Source refresh request: aislingin@dc49fdf83669ba2bb48ecb2739327e6e1a7ab383 (UI province menus and upgrade cards)
