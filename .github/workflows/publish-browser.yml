@@ -1,4 +1,5 @@
 name: Publish SunnySlopes browser build
+# Record CI results for the 2026-10-24 dashboard UI fix
 # UI layout fix: aislingin@62eeeb8af07dd2443a41b8844ef7d4983c5bad7b
 # Source refresh request: aislingin@dc49fdf83669ba2bb48ecb2739327e6e1a7ab383 (UI province menus and upgrade cards)
 # Source refresh request: aislingin@883d7706dcb23c01e3809664df772c30f56eeea2
@@ -49,6 +50,7 @@ jobs:
           persist-credentials: false
 
       - name: Import and export browser game
+        id: build
         shell: bash
         run: |
           set -euo pipefail
@@ -91,6 +93,7 @@ jobs:
           grep -Fq '<script src="webgl_probe.js"></script>' "$HTML"
           echo "Installed optional pre-engine WebGL probe"
       - name: Replace browser files and commit to main
+        id: publish
         shell: bash
         run: |
           set -euo pipefail
@@ -109,3 +112,36 @@ jobs:
           git commit -m "Publish SunnySlopes browser build from aislingin/$SOURCE_SHA"
           git push origin "HEAD:$GITHUB_REF_NAME"
           echo "Updated newwebgame/$GITHUB_REF_NAME from aislingin/$SOURCE_SHA"
+
+      - name: Record the browser build result
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -d "$GITHUB_WORKSPACE/site/.git" ]; then
+            echo "Site checkout is unavailable; cannot persist build status."
+            exit 0
+          fi
+          cd "$GITHUB_WORKSPACE/site"
+          SOURCE_SHA="unavailable"
+          if [ -d "$GITHUB_WORKSPACE/source/.git" ]; then
+            SOURCE_SHA="$(git -C "$GITHUB_WORKSPACE/source" rev-parse HEAD)"
+          fi
+          printf 'Source: %s\nGodot build and UI self-test: %s\nBrowser publication: %s\nWorkflow run: %s\n' \
+            "$SOURCE_SHA" '${{ steps.build.outcome }}' '${{ steps.publish.outcome }}' \
+            '${{ github.run_id }}' > UI_BUILD_STATUS.txt
+          if [ -f "$GITHUB_WORKSPACE/ui-smoke-test.log" ]; then
+            printf '\nUI smoke test output:\n' >> UI_BUILD_STATUS.txt
+            tail -n 25 "$GITHUB_WORKSPACE/ui-smoke-test.log" >> UI_BUILD_STATUS.txt
+          fi
+          if [ -f "$GITHUB_WORKSPACE/godot-import.log" ] && grep -Eq 'SCRIPT ERROR:|Parse Error:|Compile Error:' "$GITHUB_WORKSPACE/godot-import.log"; then
+            printf '\nGodot import errors:\n' >> UI_BUILD_STATUS.txt
+            grep -E 'SCRIPT ERROR:|Parse Error:|Compile Error:' "$GITHUB_WORKSPACE/godot-import.log" | tail -n 25 >> UI_BUILD_STATUS.txt
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add UI_BUILD_STATUS.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "Record browser UI build verification status"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
