@@ -1,4 +1,5 @@
 name: Publish SunnySlopes browser build
+# UI layout fix: aislingin@62eeeb8af07dd2443a41b8844ef7d4983c5bad7b
 # Source refresh request: aislingin@dc49fdf83669ba2bb48ecb2739327e6e1a7ab383 (UI province menus and upgrade cards)
 # Source refresh request: aislingin@883d7706dcb23c01e3809664df772c30f56eeea2
 # Source refresh request: aislingin@cfa7a416e2974d69ab42c6084e6deb751a3c81e5
@@ -59,7 +60,13 @@ jobs:
             cp -a "$SOURCE" "$TARGET"
           fi
           test -s "$TARGET/web_nothreads_release.zip"
-          godot --headless --path "$GITHUB_WORKSPACE/source" --editor --import
+          godot --headless --path "$GITHUB_WORKSPACE/source" --editor --import 2>&1 | tee "$GITHUB_WORKSPACE/godot-import.log"
+          if grep -Eq 'SCRIPT ERROR:|Parse Error:|Compile Error:|Failed to load script' "$GITHUB_WORKSPACE/godot-import.log"; then
+            echo "Refusing to publish: Godot import reported script errors."
+            exit 1
+          fi
+          godot --headless --path "$GITHUB_WORKSPACE/source" --script res://scripts/DashboardUISelfTest.gd 2>&1 | tee "$GITHUB_WORKSPACE/ui-smoke-test.log"
+          grep -Fq 'DashboardUISelfTest passed' "$GITHUB_WORKSPACE/ui-smoke-test.log"
           mkdir -p "$GITHUB_WORKSPACE/web-export"
           godot --headless --path "$GITHUB_WORKSPACE/source" --export-release "Web" "$GITHUB_WORKSPACE/web-export/index.html" 2>&1 | tee "$GITHUB_WORKSPACE/web-export.log"
           if grep -Eq 'SCRIPT ERROR:|Parse Error:|Compile Error:|Failed to load script' "$GITHUB_WORKSPACE/web-export.log"; then
