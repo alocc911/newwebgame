@@ -1,4 +1,5 @@
 name: Publish SunnySlopes browser build
+# Source refresh request: aislingin@7b57252c26a705e09d3fbb0f18cc72e3256f3ed8 (troop transfer provenance and recruitment history)
 # Source refresh request: aislingin@b8fff016bb196ac960571f5ca8294ba7427ba02b (province history and rebellion notifications, tested)
 # Source refresh request: aislingin@343e4c8dbbdca4bed10d4dae9b038466918fd23f (five troop reserves, 50-turn autoplay balance test)
 # Source refresh request: aislingin@da45a414a74a40d105627c794f20348541c16427 (march garrison reserves and autonomous balance lab)
