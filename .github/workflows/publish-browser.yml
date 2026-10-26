@@ -1,4 +1,5 @@
 name: Publish SunnySlopes browser build
+# Source refresh request: aislingin@506fcf9372791a8ab8ff148cc54491cdb707b1b1 (final ranked battle, save/load, capital, queue and fair boss updates)
 # Source refresh request: aislingin@aa2ba2c171f218a10b456f05e01fbf139c67833b (ranked battles, capital, queue, and conquest fixes)
 # Source refresh request: aislingin@ef044d6d1dcbcac20b659c7f427198bac47a06cd (remove synthetic one-troop cleanup invasions)
 # Source refresh request: aislingin@7b57252c26a705e09d3fbb0f18cc72e3256f3ed8 (troop transfer provenance and recruitment history)
