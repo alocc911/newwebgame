@@ -1,7 +1,7 @@
-Source: ef044d6d1dcbcac20b659c7f427198bac47a06cd
+Source: aa2ba2c171f218a10b456f05e01fbf139c67833b
 Godot build and UI self-test: success
 Browser publication: success
-Workflow run: 40233945270
+Workflow run: 40420505436
 
 UI smoke test output:
 libfontconfig.so.1: cannot open shared object file: No such file or directory
