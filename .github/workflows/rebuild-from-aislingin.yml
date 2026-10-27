@@ -1,0 +1,132 @@
+name: Build and publish current SunnySlopes game
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/rebuild-from-aislingin.yml"
+      - "BUILD_REQUEST.txt"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    container:
+      image: barichello/godot-ci:4.7.2
+    steps:
+      - name: Checkout website repository
+        uses: actions/checkout@v4
+        with:
+          path: site
+          persist-credentials: true
+
+      - name: Checkout latest game source
+        uses: actions/checkout@v4
+        with:
+          repository: alocc911/aislingin
+          ref: main
+          lfs: true
+          path: source
+          persist-credentials: false
+
+      - name: Prepare Godot templates
+        id: templates
+        continue-on-error: true
+        run: |
+          mkdir -p "$HOME/.local/share/godot/export_templates"
+          cp -a /root/.local/share/godot/export_templates/4.7.2.stable "$HOME/.local/share/godot/export_templates/"
+          test -s "$HOME/.local/share/godot/export_templates/4.7.2.stable/web_nothreads_release.zip"
+
+      - name: Import source assets
+        id: imports
+        if: steps.templates.outcome == 'success'
+        continue-on-error: true
+        working-directory: source
+        run: |
+          godot --headless --path . --editor --import --quit > ../site/BUILD_VALIDATION_LOG.txt 2>&1
+          cat ../site/BUILD_VALIDATION_LOG.txt
+          if grep -E "SCRIPT ERROR|Parse Error|Failed loading script" ../site/BUILD_VALIDATION_LOG.txt; then exit 1; fi
+
+      - name: Run conquest tests
+        id: conquest
+        if: steps.imports.outcome == 'success'
+        continue-on-error: true
+        working-directory: source
+        run: |
+          godot --headless --path . --script res://scripts/ConquestAndGeographySelfTest.gd >> ../site/BUILD_VALIDATION_LOG.txt 2>&1
+
+      - name: Run province and queue tests
+        id: queue
+        if: steps.conquest.outcome == 'success'
+        continue-on-error: true
+        working-directory: source
+        run: |
+          godot --headless --path . --script res://scripts/ProvinceOverhaulTestRunner.gd >> ../site/BUILD_VALIDATION_LOG.txt 2>&1
+
+      - name: Run invasion tests
+        id: invasion
+        if: steps.queue.outcome == 'success'
+        continue-on-error: true
+        working-directory: source
+        run: |
+          godot --headless --path . --script res://scripts/InvasionRulesTestRunner.gd >> ../site/BUILD_VALIDATION_LOG.txt 2>&1
+
+      - name: Run history tests
+        id: history
+        if: steps.invasion.outcome == 'success'
+        continue-on-error: true
+        working-directory: source
+        run: |
+          godot --headless --path . --script res://scripts/ProvinceHistoryTestRunner.gd >> ../site/BUILD_VALIDATION_LOG.txt 2>&1
+
+      - name: Export web game
+        id: export
+        if: steps.history.outcome == 'success'
+        continue-on-error: true
+        working-directory: source
+        run: |
+          godot --headless --path . --export-release "Web" "../site/index.html" >> ../site/BUILD_VALIDATION_LOG.txt 2>&1
+          test -s ../site/index.html
+          test -s ../site/index.wasm
+          test -s ../site/index.pck
+
+      - name: Publish validated build or failure diagnostics
+        if: always()
+        env:
+          SOURCE_IMPORT: ${{ steps.imports.outcome }}
+          CONQUEST_TEST: ${{ steps.conquest.outcome }}
+          QUEUE_TEST: ${{ steps.queue.outcome }}
+          INVASION_TEST: ${{ steps.invasion.outcome }}
+          HISTORY_TEST: ${{ steps.history.outcome }}
+          WEB_EXPORT: ${{ steps.export.outcome }}
+        run: |
+          set -e
+          SOURCE_SHA="$(git -C source rev-parse HEAD)"
+          {
+            echo "Source: alocc911/aislingin"
+            echo "Branch: main"
+            echo "Commit: $SOURCE_SHA"
+            echo "Import: $SOURCE_IMPORT"
+            echo "Conquest: $CONQUEST_TEST"
+            echo "Province queue: $QUEUE_TEST"
+            echo "Invasion: $INVASION_TEST"
+            echo "History: $HISTORY_TEST"
+            echo "Export: $WEB_EXPORT"
+          } > site/BUILD_STATUS.txt
+          if [ "$WEB_EXPORT" = success ]; then
+            printf 'Branch: main\nCommit: %s\n' "$SOURCE_SHA" > site/BUILD_INFO.txt
+          fi
+          git -C site config user.name "SunnySlopes build bot"
+          git -C site config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C site add -A
+          if ! git -C site diff --cached --quiet; then
+            git -C site commit -m "Publish validated browser build from aislingin/$SOURCE_SHA"
+            git -C site push origin HEAD:main
+          fi
+          if [ "$WEB_EXPORT" != success ]; then
+            echo "Godot validation/export failed; existing game build preserved."
+            exit 1
+          fi
