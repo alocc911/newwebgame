@@ -1252,3 +1252,4 @@ ERROR: Unable to load fontconfig, system font support is disabled.
 [  98% ] [90m[1msavepack[22m | Storing File: res://project.binary[39m[0m
 [92m[ DONE ][39m [1msavepack[22m
 [0m
+cannot connect to daemon at tcp:5037: Connection refused
