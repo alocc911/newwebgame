@@ -82,9 +82,17 @@ jobs:
         run: |
           godot --headless --path . --script res://scripts/ProvinceHistoryTestRunner.gd >> ../site/BUILD_VALIDATION_LOG.txt 2>&1
 
+      - name: Validate dashboard and province Build menu
+        id: ui
+        if: steps.history.outcome == 'success'
+        continue-on-error: true
+        working-directory: source
+        run: |
+          godot --headless --path . --script res://scripts/DashboardUISelfTest.gd >> ../site/BUILD_VALIDATION_LOG.txt 2>&1
+
       - name: Export web game
         id: export
-        if: steps.history.outcome == 'success'
+        if: steps.ui.outcome == 'success'
         continue-on-error: true
         working-directory: source
         run: |
@@ -92,6 +100,11 @@ jobs:
           test -s ../site/index.html
           test -s ../site/index.wasm
           test -s ../site/index.pck
+          # Preserve the diagnostic probe from the previous browser deployment.
+          # The probe is inert unless the player passes ?glprobe=1.
+          test -s ../site/webgl_probe.js
+          sed -i 's#<script src="index.js"></script>#<script src="webgl_probe.js"></script><script src="index.js"></script>#' ../site/index.html
+          grep -q 'src="webgl_probe.js"' ../site/index.html
 
       - name: Publish validated build or failure diagnostics
         if: always()
@@ -101,6 +114,7 @@ jobs:
           QUEUE_TEST: ${{ steps.queue.outcome }}
           INVASION_TEST: ${{ steps.invasion.outcome }}
           HISTORY_TEST: ${{ steps.history.outcome }}
+          UI_TEST: ${{ steps.ui.outcome }}
           WEB_EXPORT: ${{ steps.export.outcome }}
         run: |
           set -e
@@ -114,10 +128,20 @@ jobs:
             echo "Province queue: $QUEUE_TEST"
             echo "Invasion: $INVASION_TEST"
             echo "History: $HISTORY_TEST"
+            echo "Dashboard UI: $UI_TEST"
             echo "Export: $WEB_EXPORT"
           } > site/BUILD_STATUS.txt
           if [ "$WEB_EXPORT" = success ]; then
             printf 'Branch: main\nCommit: %s\n' "$SOURCE_SHA" > site/BUILD_INFO.txt
+            {
+              echo "Source: $SOURCE_SHA"
+              echo "Godot build and UI self-test: success"
+              echo "Browser publication: success"
+              echo "Workflow run: $GITHUB_RUN_ID"
+              echo
+              echo "UI smoke test output:"
+              grep "DashboardUISelfTest" site/BUILD_VALIDATION_LOG.txt || true
+            } > site/UI_BUILD_STATUS.txt
           fi
           git -C site config user.name "SunnySlopes build bot"
           git -C site config user.email "41898282+github-actions[bot]@users.noreply.github.com"
