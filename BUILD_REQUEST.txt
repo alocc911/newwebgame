@@ -1,0 +1,5 @@
+Source: alocc911/aislingin
+Branch: main
+Requested commit: d803ceff7243ff26cf0c9d2f5524807b964f0eee
+Requested on: 2026-10-26
+Reason: unified undefended conquest, construction queue, and invasion-count layout.
