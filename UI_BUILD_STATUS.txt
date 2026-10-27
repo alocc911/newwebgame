@@ -1,11 +1,10 @@
-Source: 73f142f30d5a3b259230d6c4efe939d1945eb582
+Source: 8f4652c1f92f7f8edabfcaed54d2f66913cf1c24
 Godot build and UI self-test: success
 Browser publication: success
-Workflow run: 40426471413
+Workflow run: 40434249331
 
 UI smoke test output:
-libfontconfig.so.1: cannot open shared object file: No such file or directory
-Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
-
 DashboardUISelfTest font sizes: tabs=25, overview=26
 DashboardUISelfTest passed: grid, popup sizing, fonts, and dismiss path
+[  18% ] [90m[1msavepack[22m | Storing File: res://scripts/DashboardUISelfTest.gdc[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/DashboardUISelfTest.gd.remap[39m[0m

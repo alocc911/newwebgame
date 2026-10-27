@@ -751,6 +751,11 @@ Province history tests: {"failures":[],"ok":true}
 libfontconfig.so.1: cannot open shared object file: No such file or directory
 Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
 
+DashboardUISelfTest font sizes: tabs=25, overview=26
+DashboardUISelfTest passed: grid, popup sizing, fonts, and dismiss path
+libfontconfig.so.1: cannot open shared object file: No such file or directory
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
 ERROR: Unable to load fontconfig, system font support is disabled.
    at: get_system_font_path (platform/linuxbsd/os_linuxbsd.cpp:843)
 ERROR: Unable to load fontconfig, system font support is disabled.
@@ -1247,4 +1252,3 @@ ERROR: Unable to load fontconfig, system font support is disabled.
 [  98% ] [90m[1msavepack[22m | Storing File: res://project.binary[39m[0m
 [92m[ DONE ][39m [1msavepack[22m
 [0m
-cannot connect to daemon at tcp:5037: Connection refused
