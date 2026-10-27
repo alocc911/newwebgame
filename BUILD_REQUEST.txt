@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: d803ceff7243ff26cf0c9d2f5524807b964f0eee
+Requested commit: cae3baa735ce502c44c33fbbef2e770317577cf0
 Requested on: 2026-10-26
-Reason: unified undefended conquest, construction queue, and invasion-count layout.
+Reason: final ownership/construction-defense safety correction, plus zero-defender conquest, unified menu queue and unobstructed invasion counts.
