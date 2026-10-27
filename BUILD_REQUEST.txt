@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: cae3baa735ce502c44c33fbbef2e770317577cf0
-Requested on: 2026-10-26
-Reason: final ownership/construction-defense safety correction, plus zero-defender conquest, unified menu queue and unobstructed invasion counts.
+Requested commit: 7112f5b0829fe18c751804e9a775295e28144bfd
+Requested on: 2026-10-27
+Reason: fixed 26-troop player starts and 16-troop direct conquest garrisons with three basic buildings; linear Easy/Hard enemy troop scaling (Hard retains two bosses and skips two levels); passive bosses with one recruitment bonus per surviving limb.
