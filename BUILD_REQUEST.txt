@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: 14a100527a7eb76c37e8b6865074246b5ef7f584
+Requested commit: b242d8fced1050b6b22333d1536fb80d3d078aac
 Requested on: 2026-10-27
-Reason: preserve surplus construction progress across queued projects; restrict Home Cave T1/T2/T3 troop control to 1/2/all province hops and remove other perks; cap friendly/enemy AI marches to two map edges with one friendly intermediate; lock receiving provinces for a turn; recalculate starting provinces after defeats; persist movement locks across saves and improve revolution and enemy faction colors. Run conquest, province-overhaul, UI and web export validation before publishing.
+Reason: fix player/AI troop-order lock boundaries, prioritize AI attack marches before reinforcements, protect sending-province ownership, fill AI recommended building queues across multiple projects with manual overrides, close right-click province menu after sending troops, add a Hide Enemies clean engagement view, and add hyper-speed for extremely large automated battle previews. Preserve existing defense-strength and enemy-type probability mechanics. Validate imports, conquest, province queues, invasions and UI; publish the playable browser export to newwebgame.
