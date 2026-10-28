@@ -1,4 +1,5 @@
 name: Publish SunnySlopes browser build
+# Source refresh request: aislingin@268f75467fa2d05515a59d2f8d8c2bbb4b1abd11 (construction carryover, Home Cave range, two-hop marches, locks, defeat recovery, faction colors)
 # Source refresh request: aislingin@73f142f30d5a3b259230d6c4efe939d1945eb582 (publish wall, water-shot, zero-defender, boss and economy regression fixes)
 # Source refresh request: aislingin@c065d64cb917b07ab103c8021f1ffc8264c09042 (display capital on province cards; final source)
 # Source refresh request: aislingin@deb40769acd8a59ef445f6560291f83bc08b78e5 (fix browser saved-game loading API for Godot 4.7)
@@ -36,6 +37,7 @@ on:
   push:
     paths:
       - .github/workflows/publish-browser.yml
+      - BUILD_REQUEST.txt
 
 permissions:
   contents: write
@@ -82,6 +84,11 @@ jobs:
             echo "Refusing to publish: Godot import reported script errors."
             exit 1
           fi
+          # Gate publication on gameplay rule regressions as well as UI.
+          for runner in ProvinceHistoryTestRunner InvasionRulesTestRunner ConquestAndGeographySelfTest ProvinceOverhaulTestRunner; do
+            echo "Running $runner"
+            godot --headless --path "$GITHUB_WORKSPACE/source" --script "res://scripts/$runner.gd" 2>&1 | tee -a "$GITHUB_WORKSPACE/gameplay-tests.log"
+          done
           godot --headless --path "$GITHUB_WORKSPACE/source" --script res://scripts/DashboardUISelfTest.gd 2>&1 | tee "$GITHUB_WORKSPACE/ui-smoke-test.log"
           grep -Fq 'DashboardUISelfTest passed' "$GITHUB_WORKSPACE/ui-smoke-test.log"
           mkdir -p "$GITHUB_WORKSPACE/web-export"
@@ -148,6 +155,10 @@ jobs:
           printf 'Source: %s\nGodot build and UI self-test: %s\nBrowser publication: %s\nWorkflow run: %s\n' \
             "$SOURCE_SHA" '${{ steps.build.outcome }}' '${{ steps.publish.outcome }}' \
             '${{ github.run_id }}' > UI_BUILD_STATUS.txt
+          if [ -f "$GITHUB_WORKSPACE/gameplay-tests.log" ]; then
+            printf '\nGameplay regression output:\n' >> UI_BUILD_STATUS.txt
+            tail -n 35 "$GITHUB_WORKSPACE/gameplay-tests.log" >> UI_BUILD_STATUS.txt
+          fi
           if [ -f "$GITHUB_WORKSPACE/ui-smoke-test.log" ]; then
             printf '\nUI smoke test output:\n' >> UI_BUILD_STATUS.txt
             tail -n 25 "$GITHUB_WORKSPACE/ui-smoke-test.log" >> UI_BUILD_STATUS.txt
