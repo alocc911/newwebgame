@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: 268f75467fa2d05515a59d2f8d8c2bbb4b1abd11
+Requested commit: 14a100527a7eb76c37e8b6865074246b5ef7f584
 Requested on: 2026-10-27
-Reason: preserve surplus construction progress across queued projects; restrict Home Cave T1/T2/T3 troop control to 1/2/all province hops and remove other perks; cap friendly/enemy AI marches to two map edges with one friendly intermediate; lock receiving provinces for a turn; recalculate starting provinces after defeats; improve revolution and enemy faction colors. Run conquest, province-overhaul, UI and web export validation before publishing.
+Reason: preserve surplus construction progress across queued projects; restrict Home Cave T1/T2/T3 troop control to 1/2/all province hops and remove other perks; cap friendly/enemy AI marches to two map edges with one friendly intermediate; lock receiving provinces for a turn; recalculate starting provinces after defeats; persist movement locks across saves and improve revolution and enemy faction colors. Run conquest, province-overhaul, UI and web export validation before publishing.
