@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: 7112f5b0829fe18c751804e9a775295e28144bfd
+Requested commit: 268f75467fa2d05515a59d2f8d8c2bbb4b1abd11
 Requested on: 2026-10-27
-Reason: fixed 26-troop player starts and 16-troop direct conquest garrisons with three basic buildings; linear Easy/Hard enemy troop scaling (Hard retains two bosses and skips two levels); passive bosses with one recruitment bonus per surviving limb.
+Reason: preserve surplus construction progress across queued projects; restrict Home Cave T1/T2/T3 troop control to 1/2/all province hops and remove other perks; cap friendly/enemy AI marches to two map edges with one friendly intermediate; lock receiving provinces for a turn; recalculate starting provinces after defeats; improve revolution and enemy faction colors. Run conquest, province-overhaul, UI and web export validation before publishing.
