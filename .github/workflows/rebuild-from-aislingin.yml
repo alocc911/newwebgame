@@ -90,6 +90,15 @@ jobs:
         run: |
           godot --headless --path . --script res://scripts/DashboardUISelfTest.gd >> ../site/BUILD_VALIDATION_LOG.txt 2>&1
 
+      - name: Simulate 50 turns with no human actions (2 seeds)
+        id: autoplay
+        if: steps.ui.outcome == 'success'
+        continue-on-error: true
+        working-directory: source
+        run: |
+          godot --headless --path . --script res://scripts/AutoplayCampaignRunner.gd -- --seeds 2 --turns 50 --first-seed 71 --boss-turn 15 --output-dir ../site/AUTOPLAY_TEST >> ../site/BUILD_VALIDATION_LOG.txt 2>&1
+          grep 'AUTOPLAY_COMPLETE' ../site/BUILD_VALIDATION_LOG.txt || true
+
       - name: Export web game
         id: export
         if: steps.ui.outcome == 'success'
@@ -115,6 +124,7 @@ jobs:
           INVASION_TEST: ${{ steps.invasion.outcome }}
           HISTORY_TEST: ${{ steps.history.outcome }}
           UI_TEST: ${{ steps.ui.outcome }}
+          AUTOPLAY_TEST: ${{ steps.autoplay.outcome }}
           WEB_EXPORT: ${{ steps.export.outcome }}
         run: |
           set -e
@@ -129,6 +139,7 @@ jobs:
             echo "Invasion: $INVASION_TEST"
             echo "History: $HISTORY_TEST"
             echo "Dashboard UI: $UI_TEST"
+            echo "Autoplay 50-turn simulation: $AUTOPLAY_TEST"
             echo "Export: $WEB_EXPORT"
           } > site/BUILD_STATUS.txt
           if [ "$WEB_EXPORT" = success ]; then
