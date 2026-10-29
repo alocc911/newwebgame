@@ -85,7 +85,7 @@ jobs:
             exit 1
           fi
           # Gate publication on gameplay rule regressions as well as UI.
-          for runner in ProvinceHistoryTestRunner InvasionRulesTestRunner ConquestAndGeographySelfTest ProvinceOverhaulTestRunner; do
+          for runner in ProvinceHistoryTestRunner InvasionRulesTestRunner CombatConsistencySelfTest ConquestAndGeographySelfTest ProvinceOverhaulTestRunner; do
             echo "Running $runner"
             godot --headless --path "$GITHUB_WORKSPACE/source" --script "res://scripts/$runner.gd" 2>&1 | tee -a "$GITHUB_WORKSPACE/gameplay-tests.log"
           done

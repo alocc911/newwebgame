@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: f82a284dc807d35d76315fb43acc6c17dc841679
+Requested commit: 7d4dd7da0b494eb7cbd505abbe1d0089f286fe14
 Requested on: 2026-10-28
-Reason: Unify one-for-one troop combat in all ordinary AI, friendly, and player-defense engagements; synchronize previews and AI estimates; account for destroyed trap factories; run new combat consistency and other gameplay regressions before publication.
+Reason: Publish fully tested shared one-for-one combat, player-defense trap losses, synchronized AI planning and previews. Both browser workflows must run CombatConsistencySelfTest before publication.
