@@ -1,7 +1,7 @@
-Source: 8b5cf6a0a5f492bbbe01624b126a583451fbad3e
-Godot build and UI self-test: failure
-Browser publication: skipped
-Workflow run: 40795112458
+Source: 575f498d36957390ad61362026219d9e3e6d076f
+Godot build and UI self-test: success
+Browser publication: success
+Workflow run: 40795440792
 
 Gameplay regression output:
 ..............................................
@@ -45,8 +45,4 @@ libfontconfig.so.1: cannot open shared object file: No such file or directory
 Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
 
 DashboardUISelfTest font sizes: tabs=25, overview=26
-ERROR: DashboardUISelfTest: Queue cancellation emitted the wrong province or index
-   at: push_error (core/variant/variant_utility.cpp:1023)
-   GDScript backtrace (most recent call first):
-       [0] _fail (res://scripts/DashboardUISelfTest.gd:9)
-       [1] _check_ui (res://scripts/DashboardUISelfTest.gd:144)
+DashboardUISelfTest passed: grid, popup sizing, fonts, and dismiss path
