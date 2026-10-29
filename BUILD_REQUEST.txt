@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: fe229f88a267e656e3f73eef1abbaed430c353d4
+Requested commit: 8028b9fae052059000eb42adbb393fb983c71d87
 Requested on: 2026-10-28
-Reason: On-demand comprehensive browser debug dump; protected-prefix AI queue regeneration and reordering; free queue entry and global manual-first construction funding; preserve undefended personal-capture buildings; economic AI rebalancing and neutral recruitment/nonmilitary construction; province UI sizing. Validate import/tests/export and publish.
+Reason: Rebuild and validate corrected comprehensive debug dump, protected unpaid AI queues and funding, preserved undefended buildings, neutral recruitment and economic AI changes. Includes current revised province regression tests.
