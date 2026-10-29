@@ -1,10 +1,10 @@
 Source: alocc911/aislingin
 Branch: main
-Commit: 7112f5b0829fe18c751804e9a775295e28144bfd
+Commit: a5f96fbc202b7928a86b37b1933fc38fee764e15
 Import: success
 Conquest: success
-Province queue: success
-Invasion: success
-History: success
-Dashboard UI: success
-Export: success
+Province queue: failure
+Invasion: skipped
+History: skipped
+Dashboard UI: skipped
+Export: skipped
