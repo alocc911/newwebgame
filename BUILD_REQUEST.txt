@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: 7d4dd7da0b494eb7cbd505abbe1d0089f286fe14
-Requested on: 2026-10-28
-Reason: Publish fully tested shared one-for-one combat, player-defense trap losses, synchronized AI planning and previews. Both browser workflows must run CombatConsistencySelfTest before publication.
+Requested commit: 8a9893f84e14a2502bb35f094e7bd8ebf33cc2b1
+Requested on: 2026-10-29
+Reason: Publish latest validated SunnySlopes changes: 2-second water resolution, neutral troop cap, garrison-weighted revolts, queue planning/cancel-all, UI controls, tutorial settings, and hyperspeed preview fixes. Rebuild Godot 4.7.2 browser export using established newwebgame publisher; preserve opt-in WebGL diagnostics and verify GitHub Pages.
