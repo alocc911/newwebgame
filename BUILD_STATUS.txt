@@ -1,10 +1,11 @@
 Source: alocc911/aislingin
 Branch: main
-Commit: a5f96fbc202b7928a86b37b1933fc38fee764e15
+Commit: 794810150731b9da9699dc3a81d2159ce038c569
 Import: success
 Conquest: success
-Province queue: failure
-Invasion: skipped
-History: skipped
-Dashboard UI: skipped
+Province queue: success
+Invasion: success
+History: success
+Dashboard UI: failure
+Autoplay 50-turn simulation: skipped
 Export: skipped
