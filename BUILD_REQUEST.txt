@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: 575f498d36957390ad61362026219d9e3e6d076f
+Requested commit: f82a284dc807d35d76315fb43acc6c17dc841679
 Requested on: 2026-10-28
-Reason: Rebuild and validate full on-demand diagnostics, protected unpaid AI queues with global funding, undefended capture preservation, neutral economics, and revised economic AI. Includes updated queue and dashboard tests and a 50-turn autoplay simulation.
+Reason: Unify one-for-one troop combat in all ordinary AI, friendly, and player-defense engagements; synchronize previews and AI estimates; account for destroyed trap factories; run new combat consistency and other gameplay regressions before publication.

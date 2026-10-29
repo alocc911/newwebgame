@@ -50,9 +50,17 @@ jobs:
           cat ../site/BUILD_VALIDATION_LOG.txt
           if grep -E "SCRIPT ERROR|Parse Error|Failed loading script" ../site/BUILD_VALIDATION_LOG.txt; then exit 1; fi
 
+      - name: Run combat consistency and player defense tests
+        id: combat
+        if: steps.imports.outcome == 'success'
+        continue-on-error: true
+        working-directory: source
+        run: |
+          godot --headless --path . --script res://scripts/CombatConsistencySelfTest.gd >> ../site/BUILD_VALIDATION_LOG.txt 2>&1
+
       - name: Run conquest tests
         id: conquest
-        if: steps.imports.outcome == 'success'
+        if: steps.combat.outcome == 'success'
         continue-on-error: true
         working-directory: source
         run: |
@@ -119,6 +127,7 @@ jobs:
         if: always()
         env:
           SOURCE_IMPORT: ${{ steps.imports.outcome }}
+          COMBAT_TEST: ${{ steps.combat.outcome }}
           CONQUEST_TEST: ${{ steps.conquest.outcome }}
           QUEUE_TEST: ${{ steps.queue.outcome }}
           INVASION_TEST: ${{ steps.invasion.outcome }}
@@ -134,6 +143,7 @@ jobs:
             echo "Branch: main"
             echo "Commit: $SOURCE_SHA"
             echo "Import: $SOURCE_IMPORT"
+            echo "Combat: $COMBAT_TEST"
             echo "Conquest: $CONQUEST_TEST"
             echo "Province queue: $QUEUE_TEST"
             echo "Invasion: $INVASION_TEST"
