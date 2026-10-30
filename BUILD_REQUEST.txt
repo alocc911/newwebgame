@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: 8a9893f84e14a2502bb35f094e7bd8ebf33cc2b1
-Requested on: 2026-10-29
-Reason: Publish latest validated SunnySlopes changes: 2-second water resolution, neutral troop cap, garrison-weighted revolts, queue planning/cancel-all, UI controls, tutorial settings, and hyperspeed preview fixes. Rebuild Godot 4.7.2 browser export using established newwebgame publisher; preserve opt-in WebGL diagnostics and verify GitHub Pages.
+Requested commit: 3c1686aa7af2422483b01666e1231790c5004e4c
+Requested on: 2026-10-30
+Reason: Publish friendly-boss fixes: separate core troops from normal garrisons, allocate all shared casualties garrison-first, use nonlethal army casualties, prevent incorrect friendly-boss defeat/home conquest, and verify new combat regression tests. Rebuild with established Godot 4.7.2 newwebgame publisher and preserve WebGL diagnostics.
