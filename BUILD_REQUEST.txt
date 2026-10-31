@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: 03f3541328d4d10ec36f385db3b7bf516e6617b9
-Requested on: 2026-10-30
-Reason: Publish province economy and migration improvements with updated automated regression tests. Use proven Godot 4.7.2 publisher and retain browser diagnostics.
+Requested commit: 59fa329e79ab7c6ebc6dc3034bde817093b5aa7b
+Requested on: 2026-10-31
+Reason: Publish next-turn population growth forecast, contiguous enemy boss territory, faster natural growth, removal of Growth Increaser, and three-building revolution reset. Use proven Godot 4.7.2 publisher with gameplay/UI tests and WebGL diagnostics.
