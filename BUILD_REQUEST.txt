@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: d797f3d5a68983f2cd5d88f38658fb5211ee9330
+Requested commit: 03f3541328d4d10ec36f385db3b7bf516e6617b9
 Requested on: 2026-10-30
-Reason: Publish all seven confirmed gameplay/UI updates: spiky pin hierarchy, proportional hyper-speed battle previews, prominent province garrison counts, defensive Hide enemies toggle, persistent caltrops, two-hop player marches across one friendly province, and rival AI attacks on boss homes. Use established Godot 4.7.2 publisher, gameplay/UI smoke tests, and preserve WebGL diagnostics.
+Reason: Publish province economy and migration improvements with updated automated regression tests. Use proven Godot 4.7.2 publisher and retain browser diagnostics.
