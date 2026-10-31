@@ -28,6 +28,7 @@ name: Publish SunnySlopes browser build
 
 # Source refresh request: aislingin@82832e96ed178d7e109a996eba347cf8fb47680c (fix reinforcement arrival locks and AI troop stockpiling)
 # Source refresh request: aislingin@a71fce17a3803440a02d6b44544a679752a5102c (faster growth, conquest happiness reset, minimum farm and 30-point happiness cap)
+# Source refresh request: aislingin@55bd1c5c642d0044bd2fa3ec08e3a7e989910db2 (25/75 population happiness floor, revolution regression tests, expanded economy autoplay simulation)
 on:
   workflow_dispatch:
     inputs:
