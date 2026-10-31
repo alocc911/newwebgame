@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: 9f25f465b875827b78f92ca1f82ad280cf2e1df5
+Requested commit: fa6d7bac24938964ad61ef8ebe4a93e3052ac98f
 Requested on: 2026-10-31
-Reason: Publish projected native/outlander happiness in province menu, 15-point per-turn happiness change cap, and a one-turn zero-happiness revolution buffer subject to existing troop suppression. Use proven Godot 4.7.2 publisher with gameplay/UI tests and WebGL diagnostics.
+Reason: Publish food-driven natural population growth. Food coverage alone controls natural growth: -1% under complete starvation, +1.5% at food parity, ~20% at 200% coverage, and capped at +50% at 300%+ coverage. Update AI forecasting, province overview readouts, and regression tests. Use proven Godot 4.7.2 publisher with gameplay/UI tests and WebGL diagnostics.
