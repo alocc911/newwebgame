@@ -1,4 +1,5 @@
 name: Publish SunnySlopes browser build
+# Source refresh request: aislingin@694b1165e72e48f627ca74b6f7b5bb832b682057 (campaign home troop table levels 1-10; prevent automatic boss takeover of current capital, preserve normal conquest)
 # Source refresh request: aislingin@2de890ee4c0a747a4b7c84e7f1b592444ac53327 (ball upgrade prices increase by campaign level, not in-level turn; retains prior boss and skip fixes)
 # Source refresh request: aislingin@268f75467fa2d05515a59d2f8d8c2bbb4b1abd11 (construction carryover, Home Cave range, two-hop marches, locks, defeat recovery, faction colors)
 # Source refresh request: aislingin@73f142f30d5a3b259230d6c4efe939d1945eb582 (publish wall, water-shot, zero-defender, boss and economy regression fixes)
