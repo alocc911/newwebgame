@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: bd935959650bdb330063b23385bc35e52ede2947
-Requested on: 2026-11-01
-Reason: Publish removal of all conquest-related civilian population deaths. Revolutions now reduce total native and outlander population to 75 only if above 75, preserving relative proportions. Starvation and migration unchanged. Use proven Godot 4.7.2 publisher, gameplay/UI regressions, and opt-in WebGL probe.
+Requested commit: dadcfd81d74fdcc5f717338aa26e7301eee36a3d
+Requested on: 2026-11-02
+Reason: Publish Skip to End corrections. Restore ordinary autobattle and boss-clash previews with camera tracking; serialize per-turn battle playback and map refresh; restore lightweight income/upgrade-reset parity; eliminate conflicting deferred camera recentering; make Stop Skipping finish the current turn; reduce idle pause to 0.12 seconds. Use proven Godot 4.7.2 publisher with gameplay/UI regression checks and WebGL probe.
