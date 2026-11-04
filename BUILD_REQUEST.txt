@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: e11f53dbb47ac598a766b14d624171634ea18577
+Requested commit: 0a6bf329fb67e8a31d0c16472bd657c18259af40
 Requested on: 2026-11-03
-Reason: Publish shared 80% domination victory when all remaining provinces are held only by rebels; fixed Rebel faction name; shorter desert-themed 4-6 letter province names with map-wide similarity rejection. Leave normal enemy faction name generator unchanged. Use proven Godot 4.7.2 publisher with gameplay/UI regression checks and WebGL probe.
+Reason: Publish approved fixed library of 400 curated preppy fictional faction names, selected deterministically with no duplicates among 400 IDs; preserve shared Rebel identity, desert province names, and all prior gameplay behavior. Source includes new faction-name regression checks. Use proven Godot 4.7.2 publisher with gameplay/UI validation and WebGL diagnostic probe.
