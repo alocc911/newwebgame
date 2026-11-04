@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: dadcfd81d74fdcc5f717338aa26e7301eee36a3d
-Requested on: 2026-11-02
-Reason: Publish Skip to End corrections. Restore ordinary autobattle and boss-clash previews with camera tracking; serialize per-turn battle playback and map refresh; restore lightweight income/upgrade-reset parity; eliminate conflicting deferred camera recentering; make Stop Skipping finish the current turn; reduce idle pause to 0.12 seconds. Use proven Godot 4.7.2 publisher with gameplay/UI regression checks and WebGL probe.
+Requested commit: e11f53dbb47ac598a766b14d624171634ea18577
+Requested on: 2026-11-03
+Reason: Publish shared 80% domination victory when all remaining provinces are held only by rebels; fixed Rebel faction name; shorter desert-themed 4-6 letter province names with map-wide similarity rejection. Leave normal enemy faction name generator unchanged. Use proven Godot 4.7.2 publisher with gameplay/UI regression checks and WebGL probe.
