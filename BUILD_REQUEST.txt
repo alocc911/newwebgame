@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: f95ec3a3300af88980971369d9d82c806e4a3419
-Requested on: 2026-11-03
-Reason: Retry curated fixed 400-name faction library after resolving Godot GDScript.get_name() built-in collision. Includes deterministic name selection, Rebel permanence, and automated regression checks; preserve existing province names and gameplay behavior. Run the established Godot 4.7.2 browser publisher.
+Requested commit: 413dcf7682d82f20009f404b3d7d6dd581d5b57b
+Requested on: 2026-11-04
+Reason: Deploy standalone six-province tutorial with 100% first engagement clear, normal AI neutral conquest battle visuals, guided Rebel troop order, free-play finish and menu entry. Preserve gameplay and optional WebGL diagnostics. Publish from aislingin/main via established Godot 4.7.2 workflow.
