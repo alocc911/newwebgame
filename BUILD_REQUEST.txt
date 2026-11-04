@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: 0a6bf329fb67e8a31d0c16472bd657c18259af40
+Requested commit: f95ec3a3300af88980971369d9d82c806e4a3419
 Requested on: 2026-11-03
-Reason: Publish approved fixed library of 400 curated preppy fictional faction names, selected deterministically with no duplicates among 400 IDs; preserve shared Rebel identity, desert province names, and all prior gameplay behavior. Source includes new faction-name regression checks. Use proven Godot 4.7.2 publisher with gameplay/UI validation and WebGL diagnostic probe.
+Reason: Retry curated fixed 400-name faction library after resolving Godot GDScript.get_name() built-in collision. Includes deterministic name selection, Rebel permanence, and automated regression checks; preserve existing province names and gameplay behavior. Run the established Godot 4.7.2 browser publisher.
