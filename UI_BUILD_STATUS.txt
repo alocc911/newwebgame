@@ -1,9 +1,25 @@
-Source: 0a6bf329fb67e8a31d0c16472bd657c18259af40
-Godot build and UI self-test: failure
-Browser publication: skipped
-Workflow run: 41773127903
+Source: f95ec3a3300af88980971369d9d82c806e4a3419
+Godot build and UI self-test: success
+Browser publication: success
+Workflow run: 41773369547
 
 Gameplay regression output:
+..............................................
+..................................##..........
+..................................###.........
+..................................###.........
+..................................###.........
+..................##.............####.........
+...............####..............########.....
+.......####.#####........##...##########..##..
+........########.......##...################..
+.........##############.................####..
+............##########..#####.................
+.......###..###############...................
+...#####....#####......####...................
+..####....###.......#.........................
+.........#....................................
+..............................................
 ..............................................
 ..............................................
 ..............................................
@@ -16,26 +32,17 @@ CONQUEST_AND_GEOGRAPHY_TEST: {"failures":[],"ok":true}
 libfontconfig.so.1: cannot open shared object file: No such file or directory
 Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
 
-SCRIPT ERROR: Invalid call to function 'get_name' in base 'GDScript'. Expected 0 argument(s).
-          at: _get_generated_faction_name_candidate (res://scripts/ProvinceSystem.gd:5844)
-          GDScript backtrace (most recent call first):
-              [0] _get_generated_faction_name_candidate (res://scripts/ProvinceSystem.gd:5844)
-              [1] get_faction_display_name (res://scripts/ProvinceSystem.gd:5857)
-              [2] _check_curated_faction_names (res://scripts/ProvinceOverhaulSelfTest.gd:101)
-              [3] run (res://scripts/ProvinceOverhaulSelfTest.gd:80)
-              [4] _run (res://scripts/ProvinceOverhaulTestRunner.gd:6)
-SCRIPT ERROR: Invalid call to function 'get_name' in base 'GDScript'. Expected 0 argument(s).
-          at: _get_generated_faction_name_candidate (res://scripts/ProvinceSystem.gd:5844)
-          GDScript backtrace (most recent call first):
-              [0] _get_generated_faction_name_candidate (res://scripts/ProvinceSystem.gd:5844)
-              [1] get_faction_display_name (res://scripts/ProvinceSystem.gd:5857)
-              [2] _check_curated_faction_names (res://scripts/ProvinceOverhaulSelfTest.gd:117)
-              [3] run (res://scripts/ProvinceOverhaulSelfTest.gd:80)
-              [4] _run (res://scripts/ProvinceOverhaulTestRunner.gd:6)
-PROVINCE_OVERHAUL_TEST: {"failures":["faction_name_not_curated","faction_name_permutation_incomplete","faction_name_other_seed_not_curated"],"ok":false}
+PROVINCE_OVERHAUL_TEST: {"failures":[],"ok":true}
 WARNING: 24 RIDs of type "CanvasItem" were leaked.
    at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2735)
 WARNING: 33 ObjectDB instances were leaked at exit (run with `--verbose` for details).
    at: cleanup (core/object/object.cpp:2536)
 ERROR: 1 resources still in use at exit (run with --verbose for details).
    at: clear (core/io/resource.cpp:822)
+
+UI smoke test output:
+libfontconfig.so.1: cannot open shared object file: No such file or directory
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+DashboardUISelfTest font sizes: tabs=25, overview=26
+DashboardUISelfTest passed: grid, popup sizing, fonts, and dismiss path
