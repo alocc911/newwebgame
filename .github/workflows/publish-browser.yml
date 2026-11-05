@@ -97,6 +97,10 @@ jobs:
           done
           godot --headless --path "$GITHUB_WORKSPACE/source" --script res://scripts/DashboardUISelfTest.gd 2>&1 | tee "$GITHUB_WORKSPACE/ui-smoke-test.log"
           grep -Fq 'DashboardUISelfTest passed' "$GITHUB_WORKSPACE/ui-smoke-test.log"
+          # Verify tutorial-specific coastline, shot corridor, neighbor graph,
+          # and the deterministic first engagement before publishing.
+          godot --headless --path "$GITHUB_WORKSPACE/source" --script res://scripts/OpeningTutorialSelfTest.gd 2>&1 | tee "$GITHUB_WORKSPACE/tutorial-smoke-test.log"
+          grep -Fq 'OPENING_TUTORIAL_TEST_OK' "$GITHUB_WORKSPACE/tutorial-smoke-test.log"
           mkdir -p "$GITHUB_WORKSPACE/web-export"
           godot --headless --path "$GITHUB_WORKSPACE/source" --export-release "Web" "$GITHUB_WORKSPACE/web-export/index.html" 2>&1 | tee "$GITHUB_WORKSPACE/web-export.log"
           if grep -Eq 'SCRIPT ERROR:|Parse Error:|Compile Error:|Failed to load script' "$GITHUB_WORKSPACE/web-export.log"; then
