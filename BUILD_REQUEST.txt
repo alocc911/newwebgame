@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: e284dd77d13cc78afe1d9488a7b31ab5649d27a8
+Requested commit: 62bb3daf0bcea94ba990a7e347ab9ade66b7620e
 Requested on: 2026-11-04
-Reason: Fit both dashboard side trays and the center console inside the decorative rim, compress upgrade cards for the reduced tray height, and validate exact panel bounds/alignment via DashboardUISelfTest. Publish updated SunnySlopes browser build.
+Reason: Refit all three HUD interior panels below the carved upper rail and above the lower rail, matching the screenshot's blue boundary. Move Level/Turn heading onto the wooden header, compress controls to fit, and verify the same exact top/bottom frame-inset positions for left tray, center console, right tray.
