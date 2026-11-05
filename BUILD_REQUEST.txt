@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: 463dcea4d6aa0451a90d041cfcd7dd816f9097cf
+Requested commit: e284dd77d13cc78afe1d9488a7b31ab5649d27a8
 Requested on: 2026-11-04
-Reason: Publish the approved concise introductory tutorial copy and outside-click dismissible informational menus. Includes scrollable tutorial instruction panel, Field Guide and Bug Report click-away dismissal, left/right click-away province management, and regression tests. Use existing Godot 4.7.2 browser publisher to deploy aislingin/main.
+Reason: Fit both dashboard side trays and the center console inside the decorative rim, compress upgrade cards for the reduced tray height, and validate exact panel bounds/alignment via DashboardUISelfTest. Publish updated SunnySlopes browser build.
