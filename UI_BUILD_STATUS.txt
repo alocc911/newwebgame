@@ -1,7 +1,7 @@
-Source: 36b0f0a9250fef4985ae4fc3b8ea11c4166289f7
-Godot build and UI self-test: success
-Browser publication: success
-Workflow run: 41959477264
+Source: d19085ba46ebbcc6dd6f82a0f89499a38ba94175
+Godot build and UI self-test: failure
+Browser publication: skipped
+Workflow run: 41960753637
 
 Gameplay regression output:
 ..............................................
@@ -44,5 +44,8 @@ UI smoke test output:
 libfontconfig.so.1: cannot open shared object file: No such file or directory
 Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
 
-DashboardUISelfTest font sizes: tabs=25, overview=26
-DashboardUISelfTest passed: dashboard, scrollable tutorial messages and outside-click dismissal
+ERROR: DashboardUISelfTest: RestartBtn has an inconsistent width 154.0
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _fail (res://scripts/DashboardUISelfTest.gd:9)
+       [1] _check_ui (res://scripts/DashboardUISelfTest.gd:175)
