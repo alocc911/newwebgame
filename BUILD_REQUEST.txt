@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: 413dcf7682d82f20009f404b3d7d6dd581d5b57b
+Requested commit: 8b355ee0de77583884d57f2789e1cd6e2b4084ee
 Requested on: 2026-11-04
-Reason: Deploy standalone six-province tutorial with 100% first engagement clear, normal AI neutral conquest battle visuals, guided Rebel troop order, free-play finish and menu entry. Preserve gameplay and optional WebGL diagnostics. Publish from aislingin/main via established Godot 4.7.2 workflow.
+Reason: Publish revised standalone tutorial with a larger irregular six-province map and unobstructed tightly clustered six-enemy opening engagement. Keep 100% requirement, guided AI and Rebel stages, normal campaign mechanics and optional WebGL diagnostics. Build from aislingin/main with the existing Godot 4.7.2 publisher.
