@@ -37,6 +37,7 @@ name: Publish SunnySlopes browser build
 # Symmetric single-tray HUD layout from aislingin@36b0f0a9250fef4985ae4fc3b8ea11c4166289f7
 # Side-tray geometry, centered buttons and alignment assertions: aislingin@d19085ba46ebbcc6dd6f82a0f89499a38ba94175
 # Centered command row construction follow-up: aislingin@4e35a561f85adcfd77cbd5ee8526defe537c92d0
+# Dashboard original opaque outer frame and rim-safe fitted console: aislingin@a9015b355118299c38a674626934eb5d9bb16671
 on:
   workflow_dispatch:
     inputs:
