@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: dc0ba72bb9c0cb568d4583cfea6c9c8a368df50f
+Requested commit: 463dcea4d6aa0451a90d041cfcd7dd816f9097cf
 Requested on: 2026-11-04
-Reason: Correct the first tutorial engagement spawning normal random water, rocks and spread-out skiers. Advance tutorial stage before first battle generation and enforce the compact six-pin obstacle-free scene on first attempt and retries. Verified headless tutorial scene test and web export. Publish from aislingin/main through existing Godot 4.7.2 workflow.
+Reason: Publish the approved concise introductory tutorial copy and outside-click dismissible informational menus. Includes scrollable tutorial instruction panel, Field Guide and Bug Report click-away dismissal, left/right click-away province management, and regression tests. Use existing Godot 4.7.2 browser publisher to deploy aislingin/main.
