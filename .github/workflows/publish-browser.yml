@@ -35,6 +35,7 @@ name: Publish SunnySlopes browser build
 # Dashboard fit/flat inset/title split and badge fix: aislingin@3ffa34ea0dd116df6e3330f557966762c30aa6a5
 # Right dashboard one-tray controls refresh: aislingin@79ec863f222251812cc7e81963b761aa43c0df32
 # Symmetric single-tray HUD layout from aislingin@36b0f0a9250fef4985ae4fc3b8ea11c4166289f7
+# Side-tray geometry, centered buttons and alignment assertions: aislingin@d19085ba46ebbcc6dd6f82a0f89499a38ba94175
 on:
   workflow_dispatch:
     inputs:
