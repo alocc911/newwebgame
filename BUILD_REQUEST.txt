@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: 8b355ee0de77583884d57f2789e1cd6e2b4084ee
+Requested commit: dc0ba72bb9c0cb568d4583cfea6c9c8a368df50f
 Requested on: 2026-11-04
-Reason: Publish revised standalone tutorial with a larger irregular six-province map and unobstructed tightly clustered six-enemy opening engagement. Keep 100% requirement, guided AI and Rebel stages, normal campaign mechanics and optional WebGL diagnostics. Build from aislingin/main with the existing Godot 4.7.2 publisher.
+Reason: Correct the first tutorial engagement spawning normal random water, rocks and spread-out skiers. Advance tutorial stage before first battle generation and enforce the compact six-pin obstacle-free scene on first attempt and retries. Verified headless tutorial scene test and web export. Publish from aislingin/main through existing Godot 4.7.2 workflow.
