@@ -1,7 +1,7 @@
-Source: d2270de2fed2baebf2495e8b81e46f36f9186b2e
+Source: 60d5f60ec3f9d416c8135f31b781713316b01448
 Godot build and UI self-test: success
 Browser publication: success
-Workflow run: 41968505699
+Workflow run: 42393720550
 
 Gameplay regression output:
 ..............................................
