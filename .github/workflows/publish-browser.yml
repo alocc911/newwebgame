@@ -1,4 +1,5 @@
 name: Publish SunnySlopes browser build
+# Source refresh request: aislingin@60d5f60ec3f9d416c8135f31b781713316b01448 (capture coastline-stage masks, province assignments, polygon union traces, and wall geometry; add downloadable Map Diagnostics JSON)
 # Source refresh request: aislingin@693fd9cd51c3eaa65e7922e806cf87560031a633 (optimized Runner/Chief water avoidance; cached pond geometry, safe path and point rejection, target safety caching; staged parity and benchmark CI passed)
 # Source refresh request: aislingin@694b1165e72e48f627ca74b6f7b5bb832b682057 (campaign home troop table levels 1-10; prevent automatic boss takeover of current capital, preserve normal conquest)
 # Source refresh request: aislingin@2de890ee4c0a747a4b7c84e7f1b592444ac53327 (ball upgrade prices increase by campaign level, not in-level turn; retains prior boss and skip fixes)
