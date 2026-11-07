@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: 6ad2648ba3a5e337736603b0c5cf3d29f021651d
+Requested commit: 3cc29ad3ca050d39dbf9f3619a7480fcbfa0c635
 Requested on: 2026-11-07
-Reason: Skip to End renders only per-turn strategic map updates with a stable full-map camera fit, bypassing normal battle previews; selecting Troops in a province menu highlights valid map destinations and opens a separate troop-count confirmation with garrison totals and presets.
+Reason: Smooth the grand-map mouse wheel to proportional 10 percent steps, fit the Skip to End and minimum grand-map zoom to the actual generated province bounds with a four percent margin on each side, and recenter on the provinces when returning to the minimum zoom.
