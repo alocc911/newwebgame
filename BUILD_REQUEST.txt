@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: 3cc29ad3ca050d39dbf9f3619a7480fcbfa0c635
+Requested commit: afb0bf21fb309327e0a1436cfd0cab1b8f1660e9
 Requested on: 2026-11-07
-Reason: Smooth the grand-map mouse wheel to proportional 10 percent steps, fit the Skip to End and minimum grand-map zoom to the actual generated province bounds with a four percent margin on each side, and recenter on the provinces when returning to the minimum zoom.
+Reason: Deploy expanded stateless migration: three-hop planning, one-hop movement each turn, frozen-snapshot simultaneous transfers, 30 percent migration cap, happiness and gold differences entirely relative, and expanded economy regression coverage.
