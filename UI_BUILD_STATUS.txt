@@ -1,7 +1,7 @@
-Source: afb0bf21fb309327e0a1436cfd0cab1b8f1660e9
+Source: fd579952b7f5b7088e2ee15ab2c7adb88d1403c4
 Godot build and UI self-test: success
 Browser publication: success
-Workflow run: 42437785332
+Workflow run: 42949739439
 
 Gameplay regression output:
 ..............................................
@@ -33,9 +33,9 @@ libfontconfig.so.1: cannot open shared object file: No such file or directory
 Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
 
 PROVINCE_OVERHAUL_TEST: {"failures":[],"ok":true}
-WARNING: 34 RIDs of type "CanvasItem" were leaked.
+WARNING: 37 RIDs of type "CanvasItem" were leaked.
    at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2735)
-WARNING: 43 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+WARNING: 46 ObjectDB instances were leaked at exit (run with `--verbose` for details).
    at: cleanup (core/object/object.cpp:2536)
 ERROR: 1 resources still in use at exit (run with --verbose for details).
    at: clear (core/io/resource.cpp:822)
