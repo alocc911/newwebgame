@@ -1,4 +1,5 @@
 name: Publish SunnySlopes browser build
+# Source refresh request: aislingin@fd579952b7f5b7088e2ee15ab2c7adb88d1403c4 (scale Native migration with happiness advantage above 15; keep 30 percent ceiling and Outlander behavior)
 # Source refresh request: aislingin@658b7e57d3f1f1fb81a27e606d51f8c933951e13 (double boss limb recruitment; reduce boss satellite march reserve to five; redistribute former home garrison to other boss provinces while boss home troops stay HP-linked)
 # Source refresh request: aislingin@fd04b98de34ffc94068f07f4689661497df4e8c9 (trace final land mask exterior boundaries, prevent inner province wall loops, validate coast geometry with historical seed regression)
 # Source refresh request: aislingin@60d5f60ec3f9d416c8135f31b781713316b01448 (capture coastline-stage masks, province assignments, polygon union traces, and wall geometry; add downloadable Map Diagnostics JSON)
