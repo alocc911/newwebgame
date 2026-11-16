@@ -1,4 +1,5 @@
 name: Publish SunnySlopes browser build
+# Deployment request 2026-11-15: aislingin@5b44ba51ed515a64a1dea32a43c9c5c934049fa8 — protect one upgrade price between levels, scale boss HP by level number, improve friendly-boss combat History and diagnostics.
 # Deployment request 2026-11-15: aislingin@79d625a1c983be96bbd1ad90fd55fbb2b4df5696 — start-screen Load Game and level test selector; boss panel overlap, catapult boss-pool immunity, garrison controls, detailed battle and boss History. Boss sprites unchanged.
 # Deployment request 2026-11-13: aislingin@bf8cd979484970ba45cc4a7e4380cff5250fd8e1 — add minimum-to-conquer estimate beneath destination troops in march confirmation.
 # Deployment request 2026-11-11: aislingin@fb1dc373a6ed3bbd9c9559bf92fca430cfbf11f8 — friendly boss invasion pool separation, dual-death ties, defensive intervention, buildings, allied-fire corrections.
