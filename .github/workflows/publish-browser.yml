@@ -1,4 +1,5 @@
 name: Publish SunnySlopes browser build
+# Deployment request 2026-11-19: aislingin@b73d554f2f03ca393c503aefecb842e40e677dfc — boss-home troop march three-layer combat and pending friendly boss post-march resolution; 10 regression cases passed.
 # Deployment request 2026-11-18: aislingin@9645f17d51f627c7b4178bbbe708591b7eaaba3c — generate alpha-outline physical hit sensor at elevated invading friendly boss sprite; disable duplicate colliders over enemy boss.
 # Deployment request 2026-11-17: aislingin@4f8a60b5545febd71d43a65f43f52cd328b5fc30 — Wind Control, boss-home independent garrisons, friendly-boss conquest exception, catapult immunity, recruitment taper and happiness recovery.
 # Deployment request 2026-11-15: aislingin@5b44ba51ed515a64a1dea32a43c9c5c934049fa8 — protect one upgrade price between levels, scale boss HP by level number, improve friendly-boss combat History and diagnostics.
