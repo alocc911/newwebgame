@@ -1,4 +1,5 @@
 name: Publish SunnySlopes browser build
+# Deployment request 2026-11-19: aislingin@96bbc260a62991f4540a51b85f0646cc3f83dab7 — catapults hit pending hostile invaders, reset caltrops between battles, name barrage sources, show enemy boss troop pools; CI validated.
 # Deployment request 2026-11-19: aislingin@b73d554f2f03ca393c503aefecb842e40e677dfc — boss-home troop march three-layer combat and pending friendly boss post-march resolution; 10 regression cases passed.
 # Deployment request 2026-11-18: aislingin@9645f17d51f627c7b4178bbbe708591b7eaaba3c — generate alpha-outline physical hit sensor at elevated invading friendly boss sprite; disable duplicate colliders over enemy boss.
 # Deployment request 2026-11-17: aislingin@4f8a60b5545febd71d43a65f43f52cd328b5fc30 — Wind Control, boss-home independent garrisons, friendly-boss conquest exception, catapult immunity, recruitment taper and happiness recovery.
