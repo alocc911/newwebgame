@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: c8b0582a5ab3e4cd63221212b51f9686ce4b07c1
+Requested commit: 72a7b826f2a4aaa98e89e6f4557b98f33190cdb4
 Requested on: 2026-11-21
-Reason: Deploy follow-up coastal province fill correction: remove stray triangles and gaps around outer wall, robust convex clipping and triangulation, matching ball landing hit zones, unchanged wall and interior borders.
+Reason: Deploy validated conservative coastal fill: eliminate broad sea-cell expansion, only wall-overlapping directly adjacent single-owner fragments, preserve outer wall and interior borders, align ball landing ownership.
