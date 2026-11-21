@@ -1,4 +1,5 @@
 name: Publish SunnySlopes browser build
+# Deployment 2026-11-21: aislingin@73909a455f3fdd7361da230e422fb707862761f2 — restore the first-overhaul interior province fills, exact shared borders and shot targeting, while keeping the corrected smooth outer coastline wall and HUD tray alignment.
 # Restore request 2026-11-21: aislingin@e1cf491ac9405402c04ac3749684ab9f89f27534 — revert grand-map interior province borders, fills, highlighting, and lookup to pre-overhaul visuals while retaining the smooth restored outer coastline and all HUD fixes. Source diff verified.
 # Regression repair 2026-11-21: aislingin@8537520611347439e22d7f13bd9074e2222ed72e — restore smooth coastline walls and continuous province ownership art; retain shared gameplay borders and test all rendered map cells. Godot export and regressions passed.
 # Deployment request 2026-11-21: aislingin@0237b23995a3918eb036dba4f66e072b23c2df02 — flush side upgrade/economy trays against the carved HUD frame and prevent multiline console text from overlapping the header; all dashboard and web export checks passed.
