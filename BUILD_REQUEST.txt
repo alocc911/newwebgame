@@ -1,5 +1,5 @@
 Source: alocc911/aislingin
 Branch: main
-Requested commit: afb0bf21fb309327e0a1436cfd0cab1b8f1660e9
-Requested on: 2026-11-07
-Reason: Deploy expanded stateless migration: three-hop planning, one-hop movement each turn, frozen-snapshot simultaneous transfers, 30 percent migration cap, happiness and gold differences entirely relative, and expanded economy regression coverage.
+Requested commit: 5b0bc07089a6f62c7b69293026fc340b90e536e4
+Requested on: 2026-11-21
+Reason: Deploy coastal province ownership fill correction, matching ball landing detection, and preserved interior province borders and original outer wall.
