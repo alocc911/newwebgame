@@ -1,4 +1,5 @@
 name: Publish SunnySlopes browser build
+# Deployment requested 2026-11-26: aislingin@326c3cb28ca4f6747849a1ddc7ce6d9533f41c5a — intact-building boss conquests, independent boss/garrison pools; production export and combat regression suite passed; frozen strategic fixtures and no-player parity matched; intentional simulated-player divergence reviewed.
 # Deployment requested 2026-11-22: aislingin@3de76d613ee4724bcc43e95dda77ccefbca262d2 — conservative strategic end-turn optimizations, parity and standard Web export validated. Trigger only this guarded browser publisher.
 # Deployment 2026-11-21: aislingin@73909a455f3fdd7361da230e422fb707862761f2 — restore the first-overhaul interior province fills, exact shared borders and shot targeting, while keeping the corrected smooth outer coastline wall and HUD tray alignment.
 # Restore request 2026-11-21: aislingin@e1cf491ac9405402c04ac3749684ab9f89f27534 — revert grand-map interior province borders, fills, highlighting, and lookup to pre-overhaul visuals while retaining the smooth restored outer coastline and all HUD fixes. Source diff verified.
